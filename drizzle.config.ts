@@ -1,7 +1,7 @@
 import { defineConfig } from "drizzle-kit";
 import envLoader from "./src/config/env_loader";
 
-export default defineConfig({
+const db = defineConfig({
   dialect: 'postgresql',
   schema: './src/database/schema.ts',
   out: './drizzle',
@@ -10,3 +10,4 @@ export default defineConfig({
   },
 });
 
+export default db;
