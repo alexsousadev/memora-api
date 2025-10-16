@@ -1,15 +1,14 @@
-import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, varchar, date } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 import { reminders } from "./reminder";
 
-export const users = pgTable('users', {
-  id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  firstName: varchar('first_name').notNull(),
-  lastName: varchar('last_name').notNull(),
-  email: varchar('email').unique().notNull(),
-  password: varchar('password').notNull(),
-})
+export const users = pgTable('user', {
+  id: integer('id_user').primaryKey().generatedAlwaysAsIdentity(),
+  name: varchar('name_user').notNull(),
+  birthdate: date('birthdate_user'),
+  photoUri: varchar('photo_uri'),
+});
 
 export const usersRelations = relations(users, ({ many }) => ({
   reminders: many(reminders),
-}))
+}));
