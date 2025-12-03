@@ -1,11 +1,12 @@
 import { z } from "zod";
 
 export const reminderSchema = z.object({
-    title: z.string(),
-    content: z.string(),
+    name: z.string(),
     date: z.string(),
-    hour: z.string(),
-    userId: z.number(),
+    time: z.string(),
+    repeat: z.boolean().optional(),
+    repeatDays: z.string().optional().nullable(),
+    userId: z.number().optional(),
 });
 
 export type Reminder = z.infer<typeof reminderSchema>;
